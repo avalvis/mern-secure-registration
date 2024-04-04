@@ -1,4 +1,4 @@
-//Register.js
+// src/pages/Register.js
 
 import React, {useRef, useState} from 'react';
 import axios from 'axios';

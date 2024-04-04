@@ -1,3 +1,5 @@
+// src/pages/SuccessModal.js
+
 import React from 'react';
 
 const SuccessModal = ({isOpen, onConfirm}) => {
