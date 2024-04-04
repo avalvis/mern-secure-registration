@@ -16,3 +16,9 @@ This project is a complete user registration system built using the MERN stack (
 - **Frontend**: React for the user interface, Axios for making HTTP requests, and react-google-recaptcha for CAPTCHA functionality.
 - **Backend**: Node.js with Express.js framework for handling server-side logic, MongoDB for data storage with Mongoose ORM for data modeling, bcrypt for password hashing, and node-fetch for server-side CAPTCHA verification.
 - **Styling**: CSS Modules for component-scoped styling, ensuring a clean and maintainable codebase.
+
+# Working on Extra Features
+
+## Fetch Registered Users
+
+This branch (`feature-fetch-users`) focuses on developing the functionality to fetch and display a list of all registered users. This feature aims to enhance administrative capabilities by providing a quick overview of user engagement.
