@@ -66,7 +66,7 @@ function Register() {
 
 
         try {
-            const endpoint = 'http://localhost:5000/api/users/register';
+            const endpoint = process.env.REACT_APP_API_ENDPOINT; // My API endpoint
             const data = {...formData, captcha: captchaValue};
             const response = await axios.post(endpoint, data);
             setShowSuccessModal(true); // Show the success modal upon successful registration
@@ -121,7 +121,7 @@ function Register() {
 
                 {/* CAPTCHA */}
                 <ReCAPTCHA
-                    sitekey="6LdwuawpAAAAAEJxFPNnaidq5y0co4bQ-WZcn4DA"
+                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
                     onChange={onCaptchaChange}
                     ref={captchaRef} // Attach the ref to the CAPTCHA component
                 />
