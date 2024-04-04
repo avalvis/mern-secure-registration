@@ -1,0 +1,3 @@
+6LdwuawpAAAAAEJxFPNnaidq5y0co4bQ-WZcn4DA - Client Side - SITE KEY
+
+6LdwuawpAAAAABldW0NOJ2AbQAbWkMYP28h2eX95 - Server Side - SECRET KEY
