@@ -44,3 +44,6 @@ Thumbs.db
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Google reCAPTCHA keys
+google-reCAPTCHA.txt
