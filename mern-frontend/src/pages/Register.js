@@ -55,6 +55,12 @@ function Register() {
     const navigate = useNavigate(); // Hook for navigation
     const captchaRef = useRef(null); // Create a ref for the CAPTCHA
 
+    const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -159,13 +165,18 @@ function Register() {
                 {formErrors.email && <div className={styles.error}>{formErrors.email}</div>}
 
                 {/* Password Input */}
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                <div>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                    />
+                    <button type="button" onClick={togglePasswordVisibility}>
+                        {showPassword ? "Hide" : "Show"}
+                    </button>
+                </div>
                 {formErrors.password && <div className={styles.error}>{formErrors.password}</div>}
 
                 {/* CAPTCHA */}
@@ -187,7 +198,6 @@ function Register() {
                 />
             )}
         </>
-
     );
 }
 
