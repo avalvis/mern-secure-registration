@@ -1,5 +1,29 @@
 // utils/passwordUtils.js
 
+/*
+passwordUtils.js, exports a single function, evaluatePasswordStrength, which evaluates the strength of a password.
+
+The evaluatePasswordStrength function performs the following steps:
+
+1. Checks if the password is in a set of common passwords. If it is, it logs a message, returns false for 'valid', and provides feedback.
+
+2. Checks if the password is less than 8 characters long. If it is, it logs a message, returns false for 'valid', and provides feedback.
+
+3. Checks if the password includes lowercase letters, uppercase letters, numbers, and special characters. For each type of character that the password includes, it increments a 'strengthScore' variable.
+
+4. If the password is 12 or more characters long, it increments 'strengthScore'. If the password is 16 or more characters long, it increments 'strengthScore' again.
+
+5. Determines whether the password is valid by checking if it includes all types of characters.
+
+6. Assigns a strength label ('very weak', 'weak', 'average', or 'strong') based on the 'strengthScore' and whether the password is valid.
+
+7. Constructs a feedback message based on the strength label and whether the password is valid, and logs this message.
+
+8. Returns an object with 'valid' indicating whether the password is valid, and 'feedback' containing the feedback message.
+
+The function is designed to provide detailed feedback on how to improve the strength of a password.
+*/
+
 const commonPasswords = new Set([
     '123456', 'password', '123456789', '12345678', '12345', 'qwerty', 'abc123',
     // Extend with more common passwords as needed.
@@ -11,13 +35,13 @@ function evaluatePasswordStrength(password) {
     // Check for common passwords
     if (commonPasswords.has(password.toLowerCase())) {
         console.log("Password is very weak: Avoid using common passwords.");
-        return {valid: false, feedback: "Password is very weak: Avoid using common passwords."};
+        return { valid: false, feedback: "Password is very weak: Avoid using common passwords." };
     }
 
     // Check for minimum length
     if (password.length < 8) {
         console.log("Password is very weak: Use at least 8 characters.");
-        return {valid: false, feedback: "Password is very weak: Use at least 8 characters."};
+        return { valid: false, feedback: "Password is very weak: Use at least 8 characters." };
     }
 
     // Character diversity checks
@@ -71,4 +95,4 @@ function evaluatePasswordStrength(password) {
     };
 }
 
-module.exports = {evaluatePasswordStrength};
+module.exports = { evaluatePasswordStrength };

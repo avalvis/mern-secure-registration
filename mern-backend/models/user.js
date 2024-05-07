@@ -1,4 +1,21 @@
 // user.js
+
+/*
+This JavaScript file, user.js, defines a Mongoose schema for a User. Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. 
+
+The User schema includes the following fields:
+- username: A unique, required string that is trimmed and must be at least 3 characters long.
+- password: A required string.
+- email: A unique, required string that is trimmed and validated with a regular expression to ensure it's in a valid email format.
+- isVerified: A boolean that defaults to false, indicating whether the user's email has been verified.
+- passwordResetToken: A string that defaults to an empty string, which could be used for password reset functionality in the future.
+- passwordResetExpires: A date field, which could be used to set an expiration time for the password reset token.
+
+The schema also includes timestamps (createdAt and updatedAt fields) that are automatically managed by Mongoose.
+
+Finally, the User model is created from the schema and exported for use in other parts of the application.
+*/
+
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({

@@ -1,4 +1,31 @@
 // server.js
+
+/*
+This JavaScript file, server.js, sets up an Express server with CORS and JSON parsing middleware, user routes, and a MongoDB connection.
+
+The server.js file performs the following steps:
+
+1. Imports the necessary modules: Express for the server, CORS for handling cross-origin requests, mongoose for interacting with MongoDB, and dotenv for loading environment variables.
+
+2. Creates an Express application instance.
+
+3. Loads the environment variables and sets the server port to the value of the 'PORT' environment variable, or 5000 if 'PORT' is not set.
+
+4. Imports the user routes from './routes/users'.
+
+5. Applies the CORS middleware to the Express application to enable handling of cross-origin requests.
+
+6. Applies the JSON parsing middleware to the Express application to automatically parse JSON request bodies.
+
+7. Applies the user routes to the Express application under the '/api/users' path.
+
+8. Connects to the MongoDB database using the 'MY_DB_URI' environment variable. If the connection is successful, it logs a success message. If the connection fails, it logs the error.
+
+9. Starts the Express server on the specified port and logs a message indicating that the server is running.
+
+This file is typically the entry point of the application, and is responsible for setting up the server and starting it.
+*/
+
 // Import the Express library.
 const express = require('express');
 // Import CORS middleware

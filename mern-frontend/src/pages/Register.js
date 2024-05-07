@@ -1,8 +1,28 @@
 // src/pages/Register.js
 
-import React, {useRef, useState} from 'react';
+/*
+Register.js, is a React component that provides a registration form for users. It uses hooks for state management, axios for HTTP requests, react-router-dom for navigation, and react-google-recaptcha for CAPTCHA verification.
+
+The Register component performs the following steps:
+
+1. Initializes state variables for form data, CAPTCHA response, form errors, and a flag for showing a success modal.
+
+2. Defines a ref for the CAPTCHA component.
+
+3. Defines a handleChange function that updates the form data and resets any field-specific errors when the user types in a form field.
+
+4. Defines an onCaptchaChange function that updates the CAPTCHA response and resets any CAPTCHA-specific errors when the user interacts with the CAPTCHA.
+
+5. Defines a handleSubmit function that validates the form fields and CAPTCHA response, sends a POST request to the '/api/users/register' endpoint with the form data and CAPTCHA response, and handles the response from the server.
+
+6. Renders a form with inputs for username, email, and password, a CAPTCHA, and a submit button. It also renders error messages for each field and a general error message if they exist in the state. If the success modal flag is true, it renders a SuccessModal component.
+
+This component is typically used in a registration page of an application, and is responsible for collecting user input, validating it, sending it to the server, and handling the server's response.
+*/
+
+import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha"; // Ensure you have installed react-google-recaptcha
 import styles from './Register.module.css'; // Your CSS module for styling
 import SuccessModal from './SuccessModal'; // Import your SuccessModal component
@@ -22,16 +42,16 @@ function Register() {
     const captchaRef = useRef(null); // Create a ref for the CAPTCHA
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({...formData, [name]: value});
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
         // Reset individual field error upon change
-        setFormErrors({...formErrors, [name]: ''});
+        setFormErrors({ ...formErrors, [name]: '' });
     };
 
     const onCaptchaChange = (value) => {
         setCaptchaValue(value);
         // Reset captcha error upon change
-        setFormErrors({...formErrors, captcha: ''});
+        setFormErrors({ ...formErrors, captcha: '' });
     };
 
     const handleSubmit = async (e) => {
@@ -39,7 +59,7 @@ function Register() {
 
         // Check for empty fields and set errors if any are found
         let hasEmptyFields = false;
-        const newErrors = {...formErrors}; // Copy existing errors
+        const newErrors = { ...formErrors }; // Copy existing errors
         if (!formData.username) {
             newErrors.username = "Username is required.";
             hasEmptyFields = true;
@@ -66,8 +86,8 @@ function Register() {
 
 
         try {
-            const endpoint = process.env.REACT_APP_API_ENDPOINT; // My API endpoint
-            const data = {...formData, captcha: captchaValue};
+            const endpoint = 'http://localhost:5000/api/users/register';
+            const data = { ...formData, captcha: captchaValue };
             const response = await axios.post(endpoint, data);
             setShowSuccessModal(true); // Show the success modal upon successful registration
 
@@ -121,7 +141,7 @@ function Register() {
 
                 {/* CAPTCHA */}
                 <ReCAPTCHA
-                    sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                    sitekey="6LdwuawpAAAAAEJxFPNnaidq5y0co4bQ-WZcn4DA"
                     onChange={onCaptchaChange}
                     ref={captchaRef} // Attach the ref to the CAPTCHA component
                 />
