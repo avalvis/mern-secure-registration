@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha"; // Ensure you have installed react-google-recaptcha
 import styles from './Register.module.css'; // Your CSS module for styling
 import SuccessModal from './SuccessModal'; // Import your SuccessModal component
+import { evaluatePasswordStrength } from '../utils/evaluatePasswordStrength'; // Import the evaluatePasswordStrength function
 
 // Define the validateEmail function at the top of your file
 function validateEmail(email) {
@@ -31,6 +32,13 @@ function Register() {
         setFormData({ ...formData, [name]: value });
         // Reset individual field error upon change
         setFormErrors({ ...formErrors, [name]: '' });
+
+        // Evaluate password strength if the 'password' field is being updated
+        if (name === 'password') {
+            const { feedback, valid } = evaluatePasswordStrength(value);
+            // Update the formErrors state with the feedback for the password
+            setFormErrors(prevErrors => ({ ...prevErrors, password: feedback }));
+        }
     };
 
     const onCaptchaChange = (value) => {
