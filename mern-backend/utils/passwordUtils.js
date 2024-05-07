@@ -26,7 +26,9 @@ The function is designed to provide detailed feedback on how to improve the stre
 
 const commonPasswords = new Set([
     '123456', 'password', '123456789', '12345678', '12345', 'qwerty', 'abc123',
-    // Extend with more common passwords as needed.
+    'admin', 'welcome', 'letmein', '1234567', 'master', '123123',
+    'welcome1', 'password1', 'qwerty123', '123qwe', '123abc', 'qwe123', 'admin123',
+    'pass123', 'qwertyuiop', '123321', '654321'
 ]);
 
 function evaluatePasswordStrength(password) {
