@@ -1,7 +1,8 @@
 // user.js
 
 /*
-This JavaScript file, user.js, defines a Mongoose schema for a User. Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. 
+user.js, defines a Mongoose schema for a User. 
+Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. 
 
 The User schema includes the following fields:
 - username: A unique, required string that is trimmed and must be at least 3 characters long.

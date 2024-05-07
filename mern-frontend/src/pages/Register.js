@@ -1,5 +1,33 @@
 // src/pages/Register.js
 
+/*
+This is a React component for my registration form. It uses hooks for state management and function components. 
+Here's a brief overview of how it works:
+
+1. The `useState` hook is used to manage the form data, captcha value, form errors, and the visibility of a success modal.
+
+2. The `useRef` hook is used to create a reference to the CAPTCHA component.
+
+3. The `useNavigate` hook from `react-router-dom` is used for navigation.
+
+4. The `handleChange` function updates the form data and resets any field-specific errors when the user types in a field. 
+If the password field is being updated, it also evaluates the password strength.
+
+5. The `onCaptchaChange` function updates the captcha value and resets the captcha error when the user interacts with the CAPTCHA.
+
+6. The `handleSubmit` function validates the form fields when the user submits the form. 
+If any fields are empty or invalid, it prevents form submission and sets the appropriate error messages. 
+If all fields are valid, it sends a POST request to a specified API endpoint with the form data and the captcha value. 
+If the request is successful, it shows a success modal. 
+If the request fails due to validation errors, it sets the error messages and resets the CAPTCHA. 
+For other types of errors, it shows an alert message.
+
+7. The `return` statement renders the form and the success modal. 
+The form includes inputs for the username, email, and password, a CAPTCHA, and a submit button. 
+Each input has an associated error message that is displayed if the corresponding field is invalid. 
+The success modal is displayed if the registration is successful.
+*/
+
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

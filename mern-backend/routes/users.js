@@ -1,7 +1,7 @@
 // routes/users.js
 
 /*
-This JavaScript file, users.js, sets up an Express router for user-related routes and handles user registration.
+users.js, sets up an Express router for user-related routes and handles user registration.
 
 The '/register' route is a POST route that handles user registration. It performs the following steps:
 
