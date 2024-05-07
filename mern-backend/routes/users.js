@@ -73,7 +73,14 @@ router.post('/register', async (req, res) => {
             email: req.body.email,
             password: hashedPassword,
         });
-        await newUser.save();
+        try {
+            await newUser.save();
+        } catch (error) {
+            if (error instanceof mongoose.Error.ValidationError && error.errors.email) {
+                return res.status(400).json({ errors: { email: "Invalid email format." } });
+            }
+            throw error;
+        }
 
         // Prepare and send the response excluding the password for security
         res.status(201).json({ message: "User successfully registered." });
