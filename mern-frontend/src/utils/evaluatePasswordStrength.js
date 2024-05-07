@@ -21,8 +21,30 @@ export function evaluatePasswordStrength(password) {
     const hasNumber = /[0-9]/.test(password);
     const hasSpecial = /[\W_]/.test(password);
 
-    if (!hasLower || !hasUpper || !hasNumber || !hasSpecial) {
-        return { valid: false, feedback: "Include all types of characters: lowercase, uppercase, numbers, and special characters." };
+    let missingTypes = [];
+    if (!hasLower) {
+        missingTypes.push("lowercase");
+    }
+    if (!hasUpper) {
+        missingTypes.push("uppercase");
+    }
+    if (!hasNumber) {
+        missingTypes.push("number");
+    }
+    if (!hasSpecial) {
+        missingTypes.push("special character");
+    }
+
+    let feedback = "You also need to include: ";
+    if (missingTypes.length > 1) {
+        let lastType = missingTypes.pop();
+        feedback += missingTypes.join(", ") + " and " + lastType;
+    } else if (missingTypes.length === 1) {
+        feedback += missingTypes[0];
+    }
+
+    if (missingTypes.length > 0) {
+        return { valid: false, feedback };
     }
 
     // If all checks are passed, then evaluate strength
